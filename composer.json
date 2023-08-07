@@ -1,0 +1,32 @@
+{
+  "version": "0.1.0",
+  "name": "be-lenka/fedex-php-sdk",
+  "description": "Fedex REST API project, adapted for php >=7, guzzle>=7",
+  "keywords": [
+    "shipping",
+    "fedex",
+    "rest",
+    "api"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/be-lenka/fedex-php-sdk/issues"
+  },
+  "require": {
+    "php": ">=7.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^6|^7"
+  },
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "belenka\\fedex\\": "src/"
+    },
+    "classmap": [
+      "src/"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
