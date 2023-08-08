@@ -2,11 +2,11 @@
 
 namespace belenka\fedex\Authorization;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use belenka\fedex\Exceptions\MissingAuthCredentialsException;
 use belenka\fedex\Traits\rawable;
 use belenka\fedex\Traits\switchableEnv;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 
 class Authorize
 {
@@ -16,6 +16,7 @@ class Authorize
 
     private $client_id;
     private $client_secret;
+    private $access_token = false;
 
     /**
      * @param  string  $client_id
@@ -35,6 +36,11 @@ class Authorize
     {
         $this->client_secret = $client_secret;
         return $this;
+    }
+    
+    public function getAccessToken()
+    {
+        return $this->access_token;
     }
 
     /**
@@ -58,7 +64,14 @@ class Authorize
                     ]
                 ]);
                 if ($query->getStatusCode() === 200) {
-                    return ($this->raw === true) ? $query : json_decode($query->getBody()->getContents());
+                    if($this->raw) {
+                        return $query;
+                    }
+                    
+                    $body = json_decode($query->getBody()->getContents());
+                    $this->access_token = $body->access_token;
+                    
+                    return $body;
                 }
             } catch (\Exception $e) {
                 return $e->getMessage();
