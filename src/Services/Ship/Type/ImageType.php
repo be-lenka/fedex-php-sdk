@@ -6,8 +6,8 @@ class ImageType
 {
 
     // "ZPLII" "EPL2" "PDF" "PNG"
-    const _PDF = 'PDF';
-    const _ZPLII = 'ZPLII';
-    const _EPL2 = 'EPL2';
-    const _PNG = 'PNG';
+    const PDF = 'PDF';
+    const ZPLII = 'ZPLII';
+    const EPL2 = 'EPL2';
+    const PNG = 'PNG';
 }

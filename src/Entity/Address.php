@@ -9,6 +9,7 @@ class Address
     public $state_or_province;
     public $postal_code;
     public $country_code;
+    public $residential = false;
 
     /**
      * @param $street_lines
@@ -60,6 +61,16 @@ class Address
         return $this;
     }
 
+    /**
+     * @param  boolean  $residential
+     * @return $this
+     */
+    public function setResidential(bool $residential)
+    {
+        $this->residential = $residential;
+        return $this;
+    }
+
     public function prepare()
     {
         return [
@@ -68,6 +79,7 @@ class Address
             'stateOrProvinceCode' => $this->state_or_province,
             'postalCode' => $this->postal_code,
             'countryCode' => $this->country_code,
+            'residential' => $this->residential,
         ];
     }
 }
