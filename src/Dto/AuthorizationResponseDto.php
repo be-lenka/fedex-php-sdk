@@ -17,9 +17,7 @@ final class AuthorizationResponseDto
 
     public function getAccessToken(): string
     {
-        if ($this->accessToken !== null && !isset($this->accessToken)) {
-            throw new Exception('uninitialized attribute');
-        }
+        $this->checkUninitializedAttribute($this->accessToken);
 
         return $this->accessToken;
     }
@@ -81,5 +79,12 @@ final class AuthorizationResponseDto
         $this->scope = $scope;
 
         return $this;
+    }
+
+    private function checkUninitializedAttribute()
+    {
+        if ($this->accessToken !== null && !isset($this->accessToken)) {
+            throw new Exception('uninitialized attribute');
+        }
     }
 }
