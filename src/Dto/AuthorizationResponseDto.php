@@ -2,6 +2,8 @@
 
 namespace belenka\fedex\Authorization;
 
+use InvalidArgumentException;
+
 final class AuthorizationResponseDto
 {
     private string $accessToken;
@@ -17,8 +19,12 @@ final class AuthorizationResponseDto
         return $this->accessToken;
     }
 
-    public function setAccessToken(string $accessToken): self
+    public function setAccessToken($accessToken): self
     {
+        if (!is_string($accessToken)) {
+            throw new InvalidArgumentException('invalid type');
+        }
+
         $this->accessToken = $accessToken;
 
         return $this;
@@ -29,8 +35,12 @@ final class AuthorizationResponseDto
         return $this->tokenType;
     }
 
-    public function setTokenType(string $tokenType): self
+    public function setTokenType($tokenType): self
     {
+        if (!is_string($tokenType)) {
+            throw new InvalidArgumentException('invalid type');
+        }
+
         $this->tokenType = $tokenType;
 
         return $this;
@@ -41,8 +51,12 @@ final class AuthorizationResponseDto
         return $this->expiresIn;
     }
 
-    public function setExpiresIn(int $expiresIn): self
+    public function setExpiresIn($expiresIn): self
     {
+        if (!is_int($expiresIn)) {
+            throw new InvalidArgumentException('invalid type');
+        }
+
         $this->expiresIn = $expiresIn;
 
         return $this;
