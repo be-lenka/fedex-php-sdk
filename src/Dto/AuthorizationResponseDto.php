@@ -82,4 +82,11 @@ final class AuthorizationResponseDto
 
         return $this;
     }
+
+    private function checkUninitializedAttribute()
+    {
+        if ($this->accessToken !== null && !isset($this->accessToken)) {
+            throw new Exception('uninitialized attribute');
+        }
+    }
 }
