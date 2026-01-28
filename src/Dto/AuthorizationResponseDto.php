@@ -37,6 +37,10 @@ final class AuthorizationResponseDto
 
     public function getTokenType(): string
     {
+        if ($this->tokenType !== null && !isset($this->tokenType)) {
+            throw new Exception('uninitialized attribute');
+        }
+
         return $this->tokenType;
     }
 
