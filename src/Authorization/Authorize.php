@@ -70,8 +70,14 @@ class Authorize
                     
                     $body = json_decode($query->getBody()->getContents());
                     $this->access_token = $body->access_token;
-                    
-                    return $body;
+
+                    $responseDto = (new AuthorizationResponseDto())
+                        ->setAccessToken($body->access_token)
+                        ->setTokenType($body->token_type)
+                        ->setExpiresIn($body->expires_in)
+                        ->setScope($body->scope);
+
+                    return $responseDto;
                 }
             } catch (\Exception $e) {
                 return $e->getMessage();
