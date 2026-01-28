@@ -2,6 +2,7 @@
 
 namespace belenka\fedex\Authorization;
 
+use Exception;
 use InvalidArgumentException;
 
 final class AuthorizationResponseDto
@@ -16,6 +17,10 @@ final class AuthorizationResponseDto
 
     public function getAccessToken(): string
     {
+        if ($this->accessToken !== null && !isset($this->accessToken)) {
+            throw new Exception('uninitialized attribute');
+        }
+
         return $this->accessToken;
     }
 
