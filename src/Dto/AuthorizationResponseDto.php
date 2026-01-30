@@ -27,7 +27,7 @@ final class AuthorizationResponseDto
     public function setAccessToken($accessToken): self
     {
         if (!is_string($accessToken)) {
-            throw new InvalidArgumentException('invalid type');
+            throw new InvalidArgumentException('invalid data-type');
         }
 
         $this->accessToken = $accessToken;
@@ -47,7 +47,7 @@ final class AuthorizationResponseDto
     public function setTokenType($tokenType): self
     {
         if (!is_string($tokenType)) {
-            throw new InvalidArgumentException('invalid type');
+            throw new InvalidArgumentException('invalid data-type');
         }
 
         $this->tokenType = $tokenType;
@@ -67,7 +67,7 @@ final class AuthorizationResponseDto
     public function setExpiresIn($expiresIn): self
     {
         if (!is_int($expiresIn)) {
-            throw new InvalidArgumentException('invalid type');
+            throw new InvalidArgumentException('invalid data-type');
         }
 
         $this->expiresIn = $expiresIn;
@@ -87,7 +87,7 @@ final class AuthorizationResponseDto
     public function setScope($scope): self
     {
         if (!is_string($scope)) {
-            throw new InvalidArgumentException('invalid type');
+            throw new InvalidArgumentException('invalid data-type');
         }
 
         $this->scope = $scope;
