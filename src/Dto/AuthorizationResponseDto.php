@@ -2,7 +2,6 @@
 
 namespace belenka\fedex\Authorization;
 
-use Exception;
 use InvalidArgumentException;
 
 final class AuthorizationResponseDto
@@ -17,10 +16,6 @@ final class AuthorizationResponseDto
 
     public function getAccessToken(): string
     {
-        if ($this->accessToken !== null && !isset($this->accessToken)) {
-            throw new Exception('uninitialized attribute');
-        }
-
         return $this->accessToken;
     }
 
@@ -37,10 +32,6 @@ final class AuthorizationResponseDto
 
     public function getTokenType(): string
     {
-        if ($this->tokenType !== null && !isset($this->tokenType)) {
-            throw new Exception('uninitialized attribute');
-        }
-
         return $this->tokenType;
     }
 
@@ -57,10 +48,6 @@ final class AuthorizationResponseDto
 
     public function getExpiresIn(): int
     {
-        if ($this->expiresIn !== null && !isset($this->expiresIn)) {
-            throw new Exception('uninitialized attribute');
-        }
-
         return $this->expiresIn;
     }
 
@@ -77,10 +64,6 @@ final class AuthorizationResponseDto
 
     public function getScope(): string
     {
-        if ($this->scope !== null && !isset($this->scope)) {
-            throw new Exception('uninitialized attribute');
-        }
-
         return $this->scope;
     }
 
