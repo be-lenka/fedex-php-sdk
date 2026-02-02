@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use belenka\fedex\Exceptions\MissingAuthCredentialsException;
 use belenka\fedex\Traits\rawable;
 use belenka\fedex\Traits\switchableEnv;
+use RuntimeException;
 
 class Authorize
 {
@@ -47,6 +48,7 @@ class Authorize
      * @return mixed|string
      * @throws MissingAuthCredentialsException
      * @throws GuzzleException
+     * @throws RuntimeException
      */
     public function authorize()
     {
