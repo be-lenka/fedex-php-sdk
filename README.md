@@ -55,7 +55,6 @@ $auth->setClientId('<clientId>');
 $auth->setClientSecret('<clientSecret>');
 
 $auth->authorize();
-$token = $auth->getAccessToken();
 ```
 
 ## Fetch tracking information by number
