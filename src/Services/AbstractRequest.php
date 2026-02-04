@@ -66,6 +66,10 @@ abstract class AbstractRequest implements RequestInterface
                 'Authorization' => "Bearer {$this->access_token}",
                 'Content-Type' => 'application/json'
             ],
+
+            // timeout
+            'timeout'         => self::HTTP_TIMEOUT_SECONDS,
+            'connect_timeout' => self::HTTP_TIMEOUT_SECONDS
         ]);
     }
 }
