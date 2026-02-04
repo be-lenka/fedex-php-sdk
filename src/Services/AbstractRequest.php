@@ -13,6 +13,8 @@ abstract class AbstractRequest implements RequestInterface
     use switchableEnv,
         rawable;
 
+    private const HTTP_TIMEOUT_SECONDS = 10;
+
     public $api_endpoint = '';
     protected $access_token;
     protected $http_client;
