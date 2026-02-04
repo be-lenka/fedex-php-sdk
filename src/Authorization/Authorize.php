@@ -44,13 +44,13 @@ class Authorize
      */
     public function authorize()
     {
-        $httpClient = new Client([
-            'timeout'         => self::HTTP_TIMEOUT_SECONDS,
-            'connect_timeout' => self::HTTP_TIMEOUT_SECONDS
-        ]);
-
         if (isset($this->client_id) && isset($this->client_secret)) {
             try {
+                $httpClient = new Client([
+                    'timeout'         => self::HTTP_TIMEOUT_SECONDS,
+                    'connect_timeout' => self::HTTP_TIMEOUT_SECONDS
+                ]);
+
                 $query = $httpClient->request('POST', $this->getApiUri('/oauth/token'), [
                     'headers' => [
                         'Content-Type' => 'application/x-www-form-urlencoded',
