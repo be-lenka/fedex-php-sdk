@@ -2,12 +2,10 @@
 
 namespace belenka\fedex\Authorization;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use belenka\fedex\Exceptions\AuthorizationException;
 use belenka\fedex\Traits\rawable;
 use belenka\fedex\Traits\switchableEnv;
-use RuntimeException;
+use GuzzleHttp\Client;
 
 class Authorize
 {
