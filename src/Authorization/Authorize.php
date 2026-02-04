@@ -45,45 +45,45 @@ class Authorize
     public function authorize()
     {
         if (isset($this->client_id) && isset($this->client_secret)) {
-            try {
-                $httpClient = new Client([
-                    'timeout'         => self::HTTP_TIMEOUT_SECONDS,
-                    'connect_timeout' => self::HTTP_TIMEOUT_SECONDS
-                ]);
-
-                $query = $httpClient->request('POST', $this->getApiUri('/oauth/token'), [
-                    'headers' => [
-                        'Content-Type' => 'application/x-www-form-urlencoded',
-                    ],
-                    'form_params' => [
-                        'grant_type' => 'client_credentials',
-                        'client_id' => $this->client_id,
-                        'client_secret' => $this->client_secret,
-                    ]
-                ]);
-
-                if ($query->getStatusCode() !== 200) {
-                    throw new AuthorizationException('Response statusCode is not ok.');
-                }
-
-                if($this->raw) {
-                    return $query;
-                }
-                
-                $body = json_decode($query->getBody()->getContents());
-
-                $responseDto = (new AuthorizationResponseDto())
-                    ->setAccessToken($body->access_token)
-                    ->setTokenType($body->token_type)
-                    ->setExpiresIn($body->expires_in)
-                    ->setScope($body->scope);
-
-                return $responseDto;
-            } catch (\Exception $e) {
-                throw new AuthorizationException('Authorization failed; ' . $e->getMessage());
-            }
-        } else {
             throw new AuthorizationException('Please provide auth credentials');
+        }
+
+        try {
+            $httpClient = new Client([
+                'timeout'         => self::HTTP_TIMEOUT_SECONDS,
+                'connect_timeout' => self::HTTP_TIMEOUT_SECONDS
+            ]);
+
+            $query = $httpClient->request('POST', $this->getApiUri('/oauth/token'), [
+                'headers' => [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                ],
+                'form_params' => [
+                    'grant_type' => 'client_credentials',
+                    'client_id' => $this->client_id,
+                    'client_secret' => $this->client_secret,
+                ]
+            ]);
+
+            if ($query->getStatusCode() !== 200) {
+                throw new AuthorizationException('Response statusCode is not ok.');
+            }
+
+            if($this->raw) {
+                return $query;
+            }
+            
+            $body = json_decode($query->getBody()->getContents());
+
+            $responseDto = (new AuthorizationResponseDto())
+                ->setAccessToken($body->access_token)
+                ->setTokenType($body->token_type)
+                ->setExpiresIn($body->expires_in)
+                ->setScope($body->scope);
+
+            return $responseDto;
+        } catch (\Exception $e) {
+            throw new AuthorizationException('Authorization failed; ' . $e->getMessage());
         }
     }
 }
