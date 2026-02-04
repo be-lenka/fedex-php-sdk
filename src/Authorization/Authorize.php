@@ -14,8 +14,8 @@ class Authorize
         rawable;
 
     private $client_id;
+
     private $client_secret;
-    private $access_token = false;
 
     /**
      * @param  string  $client_id
@@ -35,11 +35,6 @@ class Authorize
     {
         $this->client_secret = $client_secret;
         return $this;
-    }
-    
-    public function getAccessToken()
-    {
-        return $this->access_token;
     }
 
     /**
@@ -70,7 +65,6 @@ class Authorize
                 }
                 
                 $body = json_decode($query->getBody()->getContents());
-                $this->access_token = $body->access_token;
 
                 $responseDto = (new AuthorizationResponseDto())
                     ->setAccessToken($body->access_token)
