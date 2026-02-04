@@ -4,7 +4,7 @@ namespace belenka\fedex\Authorization;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use belenka\fedex\Exceptions\MissingAuthCredentialsException;
+use belenka\fedex\Exceptions\AuthorizationException;
 use belenka\fedex\Traits\rawable;
 use belenka\fedex\Traits\switchableEnv;
 use RuntimeException;
@@ -46,7 +46,7 @@ class Authorize
 
     /**
      * @return mixed|string
-     * @throws MissingAuthCredentialsException
+     * @throws AuthorizationException
      * @throws GuzzleException
      * @throws RuntimeException
      */
@@ -85,7 +85,7 @@ class Authorize
                 throw $e;
             }
         } else {
-            throw new MissingAuthCredentialsException('Please provide auth credentials');
+            throw new AuthorizationException('Please provide auth credentials');
         }
     }
 }
