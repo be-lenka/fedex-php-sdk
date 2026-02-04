@@ -45,8 +45,8 @@ class Authorize
     public function authorize()
     {
         $httpClient = new Client([
-            'timeout'         => static::HTTP_TIMEOUT_SECONDS,
-            'connect_timeout' => static::HTTP_TIMEOUT_SECONDS
+            'timeout'         => self::HTTP_TIMEOUT_SECONDS,
+            'connect_timeout' => self::HTTP_TIMEOUT_SECONDS
         ]);
 
         if (isset($this->client_id) && isset($this->client_secret)) {
