@@ -62,7 +62,7 @@ $response = $auth->authorize();
 ```php
 $obj = new \belenka\fedex\Services\Track\TrackByTrackingNumberRequest();
 
-// Response from $auth->getAccessToken()
+// Response from $authResponse->getAccessToken()
 $obj->setAccessToken($token);
 $obj->setTrackingNumber($number);
 
@@ -81,9 +81,9 @@ $address->setStreetLines('Jakubská');
 
 $obj = \belenka\fedex\Services\AddressValidation\AddressValidation($address);
 
-// Response from $auth->getAccessToken()
+// Response from $authResponse->getAccessToken()
 $obj->setAccessToken($token);
 $obj->setAddress($address);
-        
+
 $response = $obj->request();
 ```
