@@ -67,7 +67,7 @@ class Authorize
                 ]);
 
                 if ($query->getStatusCode() !== 200) {
-                    throw new AuthorizationException('');
+                    throw new AuthorizationException('Response status code is not ok.');
                 }
 
                 if($this->raw) {
@@ -84,7 +84,6 @@ class Authorize
                     ->setScope($body->scope);
 
                 return $responseDto;
-            
             } catch (\Exception $e) {
                 throw $e;
             }
