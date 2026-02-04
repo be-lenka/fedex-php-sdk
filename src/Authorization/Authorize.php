@@ -45,10 +45,7 @@ class Authorize
     }
 
     /**
-     * @return mixed|string
      * @throws AuthorizationException
-     * @throws GuzzleException
-     * @throws RuntimeException
      */
     public function authorize()
     {
