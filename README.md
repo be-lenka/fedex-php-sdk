@@ -54,7 +54,7 @@ if($productionMode) {
 $auth->setClientId('<clientId>');
 $auth->setClientSecret('<clientSecret>');
 
-$response = $auth->authorize();
+$authResponse = $auth->authorize();
 ```
 
 ## Fetch tracking information by number
