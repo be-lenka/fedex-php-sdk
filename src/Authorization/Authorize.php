@@ -85,7 +85,7 @@ class Authorize
 
                 return $responseDto;
             } catch (\Exception $e) {
-                throw $e;
+                throw new AuthorizationException('Authorization failed; ' . $e->getMessage());
             }
         } else {
             throw new AuthorizationException('Please provide auth credentials');
