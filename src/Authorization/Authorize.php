@@ -67,7 +67,7 @@ class Authorize
                 ]);
 
                 if ($query->getStatusCode() !== 200) {
-                    throw new AuthorizationException('Response status code is not ok.');
+                    throw new AuthorizationException('Response statusCode is not ok.');
                 }
 
                 if($this->raw) {
