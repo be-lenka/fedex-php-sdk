@@ -65,22 +65,26 @@ class Authorize
                         'client_secret' => $this->client_secret,
                     ]
                 ]);
-                if ($query->getStatusCode() === 200) {
-                    if($this->raw) {
-                        return $query;
-                    }
-                    
-                    $body = json_decode($query->getBody()->getContents());
-                    $this->access_token = $body->access_token;
 
-                    $responseDto = (new AuthorizationResponseDto())
-                        ->setAccessToken($body->access_token)
-                        ->setTokenType($body->token_type)
-                        ->setExpiresIn($body->expires_in)
-                        ->setScope($body->scope);
-
-                    return $responseDto;
+                if ($query->getStatusCode() !== 200) {
+                    throw new AuthorizationException('');
                 }
+
+                if($this->raw) {
+                    return $query;
+                }
+                
+                $body = json_decode($query->getBody()->getContents());
+                $this->access_token = $body->access_token;
+
+                $responseDto = (new AuthorizationResponseDto())
+                    ->setAccessToken($body->access_token)
+                    ->setTokenType($body->token_type)
+                    ->setExpiresIn($body->expires_in)
+                    ->setScope($body->scope);
+
+                return $responseDto;
+            
             } catch (\Exception $e) {
                 throw $e;
             }
