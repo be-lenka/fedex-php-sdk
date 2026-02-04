@@ -13,6 +13,8 @@ class Authorize
     use switchableEnv,
         rawable;
 
+    private const HTTP_TIMEOUT_SECONDS = 10;
+
     private $client_id;
 
     private $client_secret;
@@ -43,8 +45,8 @@ class Authorize
     public function authorize()
     {
         $httpClient = new Client([
-            'timeout'         => static::DEFAULT_TIMEOUT_SECONDS,
-            'connect_timeout' => static::DEFAULT_TIMEOUT_SECONDS
+            'timeout'         => static::HTTP_TIMEOUT_SECONDS,
+            'connect_timeout' => static::HTTP_TIMEOUT_SECONDS
         ]);
 
         if (isset($this->client_id) && isset($this->client_secret)) {
