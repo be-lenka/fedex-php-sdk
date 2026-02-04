@@ -44,7 +44,7 @@ class Authorize
      */
     public function authorize()
     {
-        if (isset($this->client_id) && isset($this->client_secret)) {
+        if (!isset($this->client_id) || !isset($this->client_secret)) {
             throw new AuthorizationException('Please provide auth credentials');
         }
 
