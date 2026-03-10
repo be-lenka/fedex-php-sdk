@@ -47,7 +47,7 @@ class TrackByTrackingNumberRequest extends AbstractRequest
             ]);
             return ($this->raw === true) ? $query : json_decode($query->getBody()->getContents());
         } catch (\Exception $e) {
-            return $e->getMessage();
+            throw $e;
         }
     }
 
