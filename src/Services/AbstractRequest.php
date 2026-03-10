@@ -17,7 +17,7 @@ abstract class AbstractRequest implements RequestInterface
 
     public $api_endpoint = '';
     protected $access_token;
-    protected $http_client;
+    protected \GuzzleHttp\Client $http_client;
 
     /**
      * AbstractRequest constructor.
