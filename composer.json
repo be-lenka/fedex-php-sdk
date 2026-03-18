@@ -1,4 +1,5 @@
 {
+  "version": "0.1.0",
   "name": "be-lenka/fedex-php-sdk",
   "description": "Fedex REST API project, adapted for php >=7, guzzle>=7",
   "keywords": [
